@@ -1,0 +1,170 @@
+.page {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  padding: 2rem;
+}
+
+/* ── LEFT ── */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: auto;
+  min-width: 480px;
+  flex-shrink: 0;
+}
+
+.titleBlock {
+  background-color: #0D5E67;
+  color: white;
+  padding: 1.2rem 1.4rem;
+  border-radius: 10px;
+  font-size: 20px;
+  box-shadow: #00000034 0px 4px 4px;
+
+}
+
+/* ── RIGHT ── */
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  flex: 1;
+  max-width: 100%;
+}
+
+.converterBlock {
+  background: #0D5E67;
+  border-radius: 14px;
+  padding: 38px 38px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  box-shadow: #00000034 0px 4px 4px;
+}
+
+.converterTitle {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.label {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.row {
+  display: flex;
+  background: #38495199;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  overflow: hidden;
+}
+
+.select {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 14px 16px;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  height: 60px;
+}
+
+.select option {
+  background: #0d5c63;
+  color: #fff;
+}
+
+.amountInput {
+  max-width: 200px;
+  border: none;
+  border-left: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 14px 16px;
+  text-align: right;
+  outline: none;
+  font-family: monospace;
+}
+
+.amountInput::-webkit-outer-spin-button,
+.amountInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.swapRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.swapBtn {
+  background: #12a8b8;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 1.3rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swapBtn:hover {
+  background: #17c4d8;
+}
+
+.resultBox {
+  background: #3849519f;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 10px;
+  padding: 38px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.result {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #f5e642;
+  font-family: monospace;
+}
+
+/* ── CTA button ── */
+.ctaBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #E1FF01;
+  color: #0a3d42;
+  border: 1px solid #242424;
+  border-radius: 17px;
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ctaBtn:hover {
+  background: #ffe800;
+}
