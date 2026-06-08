@@ -133,80 +133,6 @@
   color: #087a12;
 }
 
-.main-menu {
-  gap: 25px;
-  height: 102px;
-  background-image: url("/image/menu1.jpg");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  padding: 0 28px 0 16px;
-  font-family: Arial, sans-serif;
-}
-
-.main-menu-logo {
-  width: 135px;
-  height: 64px;
-  background-color: rgba(255, 255, 255, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 28px;
-}
-
-.main-menu-logo img {
-  max-width: 115px;
-  max-height: 52px;
-  object-fit: contain;
-}
-
-.main-menu-links {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 26px;
-}
-
-.menu-link {
-  min-width: 116px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.menu-link:hover {
-  background-color: rgba(255, 255, 255, 0.35);
-}
-
-.menu-link.active {
-  background-color: rgba(190, 190, 190, 0.55);
-  color: #ffffff;
-  font-size: 16px;
-  height: 44px;
-  min-width: 130px;
-}
-
-.logout-button {
-  border: none;
-  background: transparent;
-  color: #000000;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 10px 14px;
-}
-
-.logout-button:hover {
-  text-decoration: underline;
-}
-
 /* ================================================
    MENU — NAVBAR PRINCIPALE
    ================================================ */
@@ -284,7 +210,6 @@
     width: 100%;
     min-height: 100vh;
     height: auto;
-
     background:
   linear-gradient(
     to bottom,

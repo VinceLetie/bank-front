@@ -1,0 +1,195 @@
+/* exchange.module.css */
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: 1.25rem;
+  padding: 2rem;
+  align-items: start;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  background: #FAF9FF;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: #00000034 0px 4px 4px;
+}
+
+.cardTeal {
+  background: #e2f6f5;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width:340px ;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.row{
+  display: flex;
+  
+}
+.pairRow {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+/* Select */
+.select {
+  appearance: none;
+  border: 1px solid #777777;
+  border-radius: 8px;
+  padding: .4rem 1.8rem .4rem .7rem;
+  font-size: .85rem;
+  background: #f5f5f5 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23666'/%3E%3C/svg%3E") no-repeat right .6rem center;
+  cursor: pointer;
+  min-width: 110px;
+  outline: none;
+}
+.select:focus { border-color: #0ea5a0;
+  background: #107a8615; }
+.select option[value=""] {
+  color: #999;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  border: 1.5px solid #A6A6A6;
+  border-radius: 8px;
+  padding: .48rem .7rem;
+  font-size: .85rem;
+  background: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+}
+.input:focus { border-color: #017a88;
+  background: #107a8615; }
+
+/* Champ montant */
+.amtRow {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  margin: 12px 0 6px;
+
+}
+.amtRow input {
+  flex: 1;
+  border: none;
+  padding: .48rem .7rem;
+  border: 1.5px solid #017a88;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  font-size: 1.1rem;
+  max-width: 225px;
+  outline: none;
+  background: #107a8609;
+}
+.amtTag {
+  padding: .48rem .6rem;
+  font-size: 1.1rem;
+  font-weight: 450;
+  color: #000000;
+  border: 1.5px solid #00525B;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  align-items: center;
+  background: #107a8609;
+}
+
+/* Boutons */
+.btnClear {
+  background: #2DA7B4;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: .45rem 1.1rem;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.btnFull {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2DA7B4;
+  gap: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom:10px ;
+}
+
+.btnYellow {
+  margin: 10px auto 0;
+  width: 220px;
+  background: #E1FF00;
+  color: #000000;
+  border: 1.5px solid #00525B;
+  border-radius: 10px;
+  padding: .75rem;
+  font-size: .95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Taux */
+.rateBox {
+  border: 2px solid #0ea5a0;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0ea5a0;
+  background: #fff;
+}
+
+/* Résumé */
+.sumList {
+  list-style: none;
+  padding: 0;
+}
+.sumList li {
+  display: flex;
+  justify-content: space-between;
+  padding: .38rem 0;
+  border-bottom: .5px solid #b8dcda;
+  font-size: .86rem;
+}
+.sumList li:last-child { border-bottom: none; }
+
+.giveBox {
+  background: #c8e9e8;
+  border-radius: 8px;
+  padding: .55rem .7rem;
+  font-size: .95rem;
+  font-weight: 700;
+  color: #0ea5a0;
+  min-height: 2.2rem;
+}
+
+@media (max-width: 780px) {
+  .page { grid-template-columns: 1fr; }
+}
