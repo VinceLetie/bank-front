@@ -83,13 +83,13 @@
   display: flex;
   overflow: hidden;
   align-items: center;
-  margin: 12px 0 6px;
+  margin: 0 0 6px;
 
 }
 .amtRow input {
   flex: 1;
   border: none;
-  padding: .48rem .7rem;
+  padding: .4rem .7rem;
   border: 1.5px solid #017a88;
   border-right: none;
   border-radius: 8px 0 0 8px;
@@ -99,7 +99,7 @@
   background: #107a8609;
 }
 .amtTag {
-  padding: .48rem .6rem;
+  padding: .4rem .6rem;
   font-size: 1.1rem;
   font-weight: 450;
   color: #000000;
