@@ -345,11 +345,16 @@ background-position: center;
 }
 
 
+/* ============================================================
+   TRANSACTIONS PAGE — reset and base
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Segoe UI',sans-serif;
+  color:var(--text-dark,#1a1a1a);
+  font-size:14px;
+}
 
-
-
-
-/* Numéro de rang */
 .crk-rank {
   font-size: 22px;
   font-weight: 700;
@@ -358,3 +363,402 @@ background-position: center;
   flex-shrink: 0;
 }
 
+/* === DATE FILTER === */
+
+.df-overlay {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.df-panel {
+  background: #0D5E67;
+  box-shadow: #00000034 0px 4px 4px;
+  border-radius: 12px;
+  padding: 20px 24px;
+  max-width: 430px;
+  color: #000000;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.df-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+/* -- Ligne Du / Au -- */
+
+.df-date-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.df-label {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.df-date-box {
+  background: #2a8a8e;
+  color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 130px;
+  text-align: center;
+}
+
+.df-date-box.active {
+  border-color: #5ecfcf;
+}
+
+/* -- Corps -- */
+
+.df-body {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+/* -- Raccourcis -- */
+
+.df-shortcuts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 130px;
+}
+
+.df-shortcuts-label {
+  font-size: 12px;
+  color: #b0d8da;
+}
+
+.df-shortcut {
+  background: #e8f4f5;
+  color: #0c9ca3;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.df-shortcut.active {
+  background: #5ecfcf;
+  color: #000000;
+}
+
+.df-shortcut:hover:not(.active) {
+  background: #cde9eb;
+}
+
+/* -- Calendrier -- */
+
+.df-calendar {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.df-cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.df-month-label {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.df-nav {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 6px;
+  color: #000000;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.df-nav:hover {
+  background: rgba(255,255,255,0.28);
+}
+
+.df-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.df-day-name {
+  font-size: 12px;
+  color: #8cb5b8;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.df-day {
+  text-align: center;
+  padding: 6px 2px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.df-day.valid {
+  cursor: pointer;
+}
+
+.df-day.valid:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.df-day.in-range {
+  background: rgba(94,207,207,0.25);
+}
+
+.df-day.range-start,
+.df-day.range-end {
+  background: #5ecfcf;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* -- Footer -- */
+
+.df-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.df-count {
+  font-size: 13px;
+  color: #cbfcff;
+}
+
+.df-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.df-btn-reset {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.df-btn-apply {
+  background: #5ecfcf;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =============================================
+   TRANSACTION DETAIL — popup
+   ============================================= */
+
+.td-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.td-panel {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 440px;
+  overflow: hidden;
+}
+
+/* -- Header -- */
+
+.td-header {
+  background: #0d6e6e;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* -- Header annulée (jaune/orange) -- */
+.td-header-annulee             { background: #c8920a; }
+.td-header-annulee .td-dot     { background: #fde68a; }
+
+.td-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.td-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+.td-close {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* -- Corps -- */
+
+.td-body {
+  padding: 20px;
+}
+
+.td-date {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 18px;
+}
+
+/* -- Section (Client / Détails) -- */
+
+.td-section {
+  margin-bottom: 16px;
+}
+
+.td-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.05em;
+}
+
+.td-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.td-avatar.teal  { background: #e6f4f4; color: #0d6e6e; }
+.td-avatar.yellow { background: #fff8e1; color: #c8920a; }
+
+.td-block {
+  background: #f5f7f8;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.td-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.td-row span   { color: #6b7280; }
+.td-row strong { color: #111827; font-weight: 500; }
+
+.td-hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 2px 0;
+}
+
+.td-converted {
+  color: #0d6e6e;
+  font-size: 15px;
+}
+
+/* -- Boutons -- */
+
+.td-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.td-btn-cancel {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c8920a;
+  background: #fff8e1;
+  color: #c8920a;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.td-btn-back {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f5f7f8;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* -- ID + Date en haut -- */
+.td-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.td-id {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0d6e6e;
+  background: #e6f4f4;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.td-date {
+  font-size: 13px;
+  color: #6b7280;
+}
