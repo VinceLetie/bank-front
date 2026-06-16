@@ -18,7 +18,7 @@
   min-width: 0;
 }
 
-/* ─── Barre filtres ───────────────────────────────────────────────────────────── */
+/* ─── Barre recherche + filtres ──────────────────────────────────────────────── */
 
 .bar {
   display: flex;
@@ -33,6 +33,63 @@
   color: #6b7280;
   white-space: nowrap;
 }
+
+.barSep {
+  width: 1px;
+  height: 24px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* ─── Search ──────────────────────────────────────────────────────────────────── */
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  font-size: 13px;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 9px 13px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+}
+
+.searchInput:focus { border-color: #0d6e6e; }
+
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.searchClear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  color: #9ca3af;
+  padding: 2px 4px;
+  line-height: 1;
+}
+
+.searchClear:hover {
+  color: #374151;
+}
+
+/* ─── Filter buttons ──────────────────────────────────────────────────────────── */
 
 .filterButtons {
   display: flex;
@@ -311,7 +368,7 @@
 .btnAnnuler   { background-color: #374151; color: #ffffff; }
 
 .btnDisabled {
-  background-color: #374151 !important;
+  background-color: #374151 important;
   color: #6b7280 !important;
   cursor: not-allowed;
 }

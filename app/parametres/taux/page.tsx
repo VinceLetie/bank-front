@@ -30,42 +30,79 @@ const mockDevises: Devise[] = [
   { id: 8, nom: "Rand Sud-Africain", code: "ZAR" },
 ];
 
+// Historique complet — plusieurs entrées par devise
 const mockTaux: Taux[] = [
-  { id: 1, deviseCode: "MGA", deviseNom: "Ariary Malagasy", valeur: 4500, updatedAt: "2025-06-15T10:30:00Z" },
-  { id: 2, deviseCode: "EUR", deviseNom: "Euro", valeur: 4800, updatedAt: "2025-06-14T08:00:00Z" },
-  { id: 3, deviseCode: "USD", deviseNom: "Dollar Américain", valeur: 1, updatedAt: "2025-06-13T12:00:00Z" },
-  { id: 4, deviseCode: "GBP", deviseNom: "Livre Sterling", valeur: 5200, updatedAt: "2025-06-12T09:15:00Z" },
-  { id: 5, deviseCode: "XOF", deviseNom: "Franc CFA", valeur: 3100, updatedAt: "2025-06-11T14:00:00Z" },
-  { id: 6, deviseCode: "JPY", deviseNom: "Yen Japonais", valeur: 30, updatedAt: "2025-06-10T11:00:00Z" },
-  { id: 7, deviseCode: "CNY", deviseNom: "Yuan Chinois", valeur: 620, updatedAt: "2025-06-09T16:45:00Z" },
-  { id: 8, deviseCode: "ZAR", deviseNom: "Rand Sud-Africain", valeur: 240, updatedAt: "2025-06-08T07:30:00Z" },
+  // MGA
+  { id: 1,  deviseCode: "MGA", deviseNom: "Ariary Malagasy",    valeur: 4500, updatedAt: "2025-06-15T10:30:00Z" },
+  { id: 9,  deviseCode: "MGA", deviseNom: "Ariary Malagasy",    valeur: 4450, updatedAt: "2025-06-10T08:00:00Z" },
+  { id: 10, deviseCode: "MGA", deviseNom: "Ariary Malagasy",    valeur: 4400, updatedAt: "2025-05-28T09:00:00Z" },
+  // EUR
+  { id: 2,  deviseCode: "EUR", deviseNom: "Euro",               valeur: 4800, updatedAt: "2025-06-14T08:00:00Z" },
+  { id: 11, deviseCode: "EUR", deviseNom: "Euro",               valeur: 4750, updatedAt: "2025-06-05T11:00:00Z" },
+  // USD
+  { id: 3,  deviseCode: "USD", deviseNom: "Dollar Américain",   valeur: 1,    updatedAt: "2025-06-13T12:00:00Z" },
+  // GBP
+  { id: 4,  deviseCode: "GBP", deviseNom: "Livre Sterling",     valeur: 5200, updatedAt: "2025-06-12T09:15:00Z" },
+  { id: 12, deviseCode: "GBP", deviseNom: "Livre Sterling",     valeur: 5100, updatedAt: "2025-05-30T14:00:00Z" },
+  // XOF
+  { id: 5,  deviseCode: "XOF", deviseNom: "Franc CFA",          valeur: 3100, updatedAt: "2025-06-11T14:00:00Z" },
+  // JPY
+  { id: 6,  deviseCode: "JPY", deviseNom: "Yen Japonais",       valeur: 30,   updatedAt: "2025-06-10T11:00:00Z" },
+  { id: 13, deviseCode: "JPY", deviseNom: "Yen Japonais",       valeur: 28,   updatedAt: "2025-05-20T10:00:00Z" },
+  // CNY
+  { id: 7,  deviseCode: "CNY", deviseNom: "Yuan Chinois",       valeur: 620,  updatedAt: "2025-06-09T16:45:00Z" },
+  // ZAR
+  { id: 8,  deviseCode: "ZAR", deviseNom: "Rand Sud-Africain",  valeur: 240,  updatedAt: "2025-06-08T07:30:00Z" },
 ];
 
 // ─── API stubs ────────────────────────────────────────────────────────────────
 
-async function fetchTaux(filter: Filter): Promise<Taux[]> {
+async function fetchTaux(filter: Filter, search: string): Promise<Taux[]> {
+  // Tri décroissant par date
   let result = [...mockTaux].sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
   );
-  const today = new Date().toDateString();
-  if (filter === "maj") {
-    result = result.filter((t) => new Date(t.updatedAt).toDateString() === today);
+
+  // Filtre "Taux récents" : garder uniquement le dernier enregistrement par devise
+  if (filter === "recents") {
+    const seen = new Set<string>();
+    result = result.filter((t) => {
+      if (seen.has(t.deviseCode)) return false;
+      seen.add(t.deviseCode);
+      return true;
+    });
   }
+
+  // Recherche par code ou nom de devise
+  if (search.trim()) {
+    const q = search.trim().toLowerCase();
+    result = result.filter(
+      (t) =>
+        t.deviseCode.toLowerCase().includes(q) ||
+        t.deviseNom.toLowerCase().includes(q)
+    );
+  }
+
   return result;
 }
 
 async function updateTaux(deviseCode: string, valeur: number): Promise<void> {
-  // await fetch(`/api/taux/${deviseCode}`, { method: "PUT", body: JSON.stringify({ valeur }) });
-  const existing = mockTaux.find((t) => t.deviseCode === deviseCode);
-  if (existing) {
-    existing.valeur = valeur;
-    existing.updatedAt = new Date().toISOString();
-  }
+  // Ajoute un nouvel enregistrement dans l'historique
+  const devise = mockDevises.find((d) => d.code === deviseCode);
+  if (!devise) return;
+  const newEntry: Taux = {
+    id: mockTaux.length + 1,
+    deviseCode,
+    deviseNom: devise.nom,
+    valeur,
+    updatedAt: new Date().toISOString(),
+  };
+  mockTaux.unshift(newEntry);
 }
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Filter = "tous" | "maj";
+type Filter = "tous" | "recents";
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleString("fr-FR", {
@@ -74,24 +111,53 @@ function formatDate(iso: string): string {
   });
 }
 
-// ─── Barre filtres ────────────────────────────────────────────────────────────
+// ─── Barre recherche + filtres ────────────────────────────────────────────────
 
-function FilterBar({ filter, onFilter }: { filter: Filter; onFilter: (v: Filter) => void }) {
+function SearchFilterBar({
+  filter,
+  onFilter,
+  search,
+  onSearch,
+}: {
+  filter: Filter;
+  onFilter: (v: Filter) => void;
+  search: string;
+  onSearch: (v: string) => void;
+}) {
   return (
     <div className={styles.bar}>
+      {/* Champ de recherche */}
+      <div className={styles.searchWrapper}>
+        <input
+          className={styles.searchInput}
+          type="text"
+          placeholder="Rechercher une devise…"
+          value={search}
+          onChange={(e) => onSearch(e.target.value)}
+        />
+        {search && (
+          <button className={styles.searchClear} onClick={() => onSearch("")}>
+            ✕
+          </button>
+        )}
+      </div>
+
+      {/* Séparateur */}
+      <span className={styles.barSep} />
+
       <span className={styles.barLabel}>Afficher :</span>
       <div className={styles.filterButtons}>
         <button
           className={`${styles.filterBtn} ${filter === "tous" ? styles.filterBtnActive : ""}`}
           onClick={() => onFilter("tous")}
         >
-          Tout afficher
+          Historique complet
         </button>
         <button
-          className={`${styles.filterBtn} ${filter === "maj" ? styles.filterBtnActive : ""}`}
-          onClick={() => onFilter("maj")}
+          className={`${styles.filterBtn} ${filter === "recents" ? styles.filterBtnActive : ""}`}
+          onClick={() => onFilter("recents")}
         >
-          Mis à jour aujourd'hui
+          Taux récents
         </button>
       </div>
     </div>
@@ -110,7 +176,7 @@ function TauxTable({ taux, selected, onSelect }: {
           <th>ID</th>
           <th>Devise</th>
           <th>Valeur / 1 USD</th>
-          <th>Date de m.à.j</th>
+          <th>Date du changement</th>
         </tr>
       </thead>
       <tbody>
@@ -170,7 +236,6 @@ function FormulaireTaux({ selected, onClear, onRefresh }: {
     setError("");
   }, [selected]);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
@@ -199,7 +264,6 @@ function FormulaireTaux({ selected, onClear, onRefresh }: {
       <div className={styles.formCard}>
         <p className={styles.formTitle}>Modifier un taux</p>
 
-        {/* Code devise avec recherche */}
         <div className={styles.formGroup} ref={wrapperRef}>
           <label htmlFor="code">Code devise :</label>
           <div className={styles.comboWrapper}>
@@ -240,7 +304,6 @@ function FormulaireTaux({ selected, onClear, onRefresh }: {
           )}
         </div>
 
-        {/* Valeur */}
         <div className={styles.formGroup}>
           <label htmlFor="valeur">Valeur / 1 USD :</label>
           <input
@@ -278,19 +341,25 @@ function FormulaireTaux({ selected, onClear, onRefresh }: {
 
 export default function TauxPage() {
   const [taux, setTaux] = useState<Taux[]>([]);
-  const [filter, setFilter] = useState<Filter>("tous");
+  const [filter, setFilter] = useState<Filter>("recents");
+  const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<Taux | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    fetchTaux(filter).then(setTaux);
-  }, [filter, refreshKey]);
+    fetchTaux(filter, search).then(setTaux);
+  }, [filter, search, refreshKey]);
 
   return (
     <div className={styles.page}>
       <div className={styles.topSection}>
         <div className={styles.leftSection}>
-          <FilterBar filter={filter} onFilter={setFilter} />
+          <SearchFilterBar
+            filter={filter}
+            onFilter={(v) => { setFilter(v); setSelected(null); }}
+            search={search}
+            onSearch={(v) => { setSearch(v); setSelected(null); }}
+          />
           {selected && (
             <div className={styles.clearRow}>
               <button className={styles.clearBtn} onClick={() => setSelected(null)}>
