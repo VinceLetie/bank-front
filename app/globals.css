@@ -766,7 +766,7 @@ body{
 }
 /* TabLayout.tsx */
 .tab-layout {
-  border-radius: 6px;
+  border-radius: 12px;
   overflow: hidden;
   background-color: #113535;
 }

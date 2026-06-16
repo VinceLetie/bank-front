@@ -172,6 +172,7 @@ function FormulaireDevise({ selected, onClear, onRefresh }: {
   return (
     <div className={styles.formulaire}>
       <div className={styles.formCard}>
+        <p className={styles.formTitle}>{hasSelection ? "Modifier un devise" : "Ajouter un devise"}</p>
         <div className={styles.formGroup}>
           <label htmlFor="nom">Nom :</label>
           <input id="nom" type="text" placeholder="Nom de la devise...." value={nom} onChange={(e) => setNom(e.target.value)} />
