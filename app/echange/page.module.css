@@ -4,8 +4,6 @@
   display: grid;
   grid-template-columns: 1fr 450px;
   gap: 1.25rem;
-  padding: 2rem;
-  align-items: start;
   font-family: 'Segoe UI', sans-serif;
 }
 

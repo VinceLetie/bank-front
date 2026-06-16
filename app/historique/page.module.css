@@ -4,7 +4,6 @@
 
 /* --- Page --- */
 .page-wrapper {
-  padding: 32px;
   gap: 8px;
   display: grid;
   grid-template-columns: 1fr 450px;

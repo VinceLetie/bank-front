@@ -1,0 +1,260 @@
+/* ─── Layout ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  width: 100%;
+}
+
+.topSection {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* ─── Barre recherche ─────────────────────────────────────────────────────────── */
+
+.bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 9px 13px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+}
+
+.searchInput:focus { border-color: #0d6e6e; }
+
+
+.filterButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.filterBtn {
+  padding: 8px 32px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.filterBtn:hover  { border-color: #0d6e6e; color: #0d6e6e; }
+.filterBtn.filterBtnActive { background: #0d6e6e; color: #fff; border-color: #0d6e6e; }
+
+/* ─── Table wrapper ───────────────────────────────────────────────────────────── */
+
+.tableWrapper {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  overflow: hidden;
+  width: 100%;
+  background-color: #006666;
+  box-shadow: #00000034 0px 4px 4px;
+}
+
+.clearRow {
+  display: flex;
+  justify-content: flex-end;
+}
+.clearBtn {
+  padding: 5px 12px;
+  font-size: 12px;
+  background: #374151;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.clearBtn:hover { background: #4b5563; }
+/* ─── Table ───────────────────────────────────────────────────────────────────── */
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: FAF9FF;
+}
+.table thead {
+  display: table;
+  width: 100%; /* ← 8px = largeur approximative de la scrollbar */
+  table-layout: fixed;
+  padding-right: 8px;
+}
+
+.table thead th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  top: 0;
+  z-index: 1;
+}
+
+.row {
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.row:hover { background-color: #e6f4f4; }
+
+.rowSelected {
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  background-color: #70b6b6;
+}
+.table tbody {
+  display: block;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: #FAF9FF;
+}
+.table tbody tr { border-bottom: 1px solid #e5e7eb; display: table;  width: 100%; table-layout: fixed;}
+.table tbody tr:last-child td { border-bottom: none; }
+
+.table tbody td {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+}
+/* Largeurs fixes sur chaque colonne — à adapter selon ton nombre de colonnes */
+.table th:nth-child(1),
+.table td:nth-child(1) {  width: 40%; }   /* Nom */
+
+.table th:nth-child(2),
+.table td:nth-child(2) { width: 30%; }   /* Code devise */
+
+.table th:nth-child(3),
+.table td:nth-child(3) { width: 20%; }   /* Valeur / 1 USD */
+
+.table th:nth-child(4),
+.table td:nth-child(4) { width: 20%; }   /* Status */
+.empty {
+  text-align: center;
+  color: #9ca3af;
+  padding: 32px !important;
+}
+
+/* ─── Toggle ──────────────────────────────────────────────────────────────────── */
+
+.toggle {
+  width: 52px;
+  height: 28px;
+  border-radius: 999px;
+  background-color: #9ca3af;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s;
+  padding: 0;
+}
+
+.toggle.toggleOn { background-color: #22c55e; }
+
+.toggleThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: left 0.2s;
+}
+
+.toggle.toggleOn .toggleThumb { left: calc(100% - 25px); }
+
+/* ─── Formulaire ──────────────────────────────────────────────────────────────── */
+
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 220px;
+}
+
+.formCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: #00000034 0px 4px 4px;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup:last-child { margin-bottom: 0; }
+
+.formGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.formGroup input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid #cccccc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #333333;
+  outline: none;
+}
+
+.formGroup input:focus { border-color: #006666; }
+
+/* ─── Boutons actions ─────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn:not(.btnDisabled):active { transform: scale(0.97); }
+
+.btnAjouter { background-color: #e8ff00; color: #1a1a1a; }
+.btnModifier { background-color: #b0b0b0; color: #ffffff; }
+.btnSupprimer { background-color: #e8a010; color: #ffffff; }
+
+.btnDisabled {
+  background-color: #374151 !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+}
