@@ -1,0 +1,317 @@
+/* ─── Layout ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  width: 100%;
+}
+
+.topSection {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* ─── Barre filtres ───────────────────────────────────────────────────────────── */
+
+.bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.barLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.filterButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.filterBtn {
+  padding: 8px 22px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.filterBtn:hover { border-color: #0d6e6e; color: #0d6e6e; }
+.filterBtnActive { background: #0d6e6e !important; color: #fff !important; border-color: #0d6e6e !important; }
+
+/* ─── Clear row ───────────────────────────────────────────────────────────────── */
+
+.clearRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clearBtn {
+  padding: 5px 12px;
+  font-size: 12px;
+  background: #374151;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.clearBtn:hover { background: #4b5563; }
+
+/* ─── Table wrapper ───────────────────────────────────────────────────────────── */
+
+.tableWrapper {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  overflow: hidden;
+  width: 100%;
+  background-color: #006666;
+  box-shadow: #00000034 0px 4px 4px;
+}
+
+/* ─── Table ───────────────────────────────────────────────────────────────────── */
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table thead th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #006666;
+}
+
+.table tbody {
+  display: block;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: #faf9ff;
+}
+
+.table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+
+.table tbody td {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+.row {
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.row:hover { background-color: #e6f4f4; }
+
+.rowSelected {
+  cursor: pointer;
+  background-color: #70b6b6;
+}
+
+/* Column widths */
+.table th:nth-child(1),
+.table td:nth-child(1) { width: 8%; }
+
+.table th:nth-child(2),
+.table td:nth-child(2) { width: 40%; }
+
+.table th:nth-child(3),
+.table td:nth-child(3) { width: 22%; }
+
+.table th:nth-child(4),
+.table td:nth-child(4) { width: 30%; }
+
+.codeTag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #e0f2f2;
+  color: #006666;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-right: 6px;
+}
+
+.dateCell {
+  color: #6b7280 !important;
+  font-size: 13px !important;
+}
+
+.empty {
+  text-align: center;
+  color: #9ca3af;
+  padding: 32px !important;
+}
+
+/* ─── Formulaire ──────────────────────────────────────────────────────────────── */
+
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 240px;
+}
+
+.formCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: #00000034 0px 4px 4px;
+}
+
+.formTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #006666;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 1rem 0;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.formGroup:last-child { margin-bottom: 0; }
+
+.formGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.formGroup input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid #cccccc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #333333;
+  outline: none;
+}
+
+.formGroup input:focus { border-color: #006666; }
+
+/* ─── Combo / dropdown ────────────────────────────────────────────────────────── */
+
+.comboWrapper {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.1s;
+}
+
+.dropdownItem:hover { background: #e6f4f4; }
+
+.dropdownNom {
+  color: #374151;
+}
+
+.deviseNomHint {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: #006666;
+  font-style: italic;
+}
+
+.errorMsg {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: #dc2626;
+}
+
+/* ─── Boutons actions ─────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn:not(.btnDisabled):active { transform: scale(0.97); }
+
+.btnModifier  { background-color: #b0b0b0; color: #ffffff; }
+.btnAnnuler   { background-color: #374151; color: #ffffff; }
+
+.btnDisabled {
+  background-color: #374151 !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+}
