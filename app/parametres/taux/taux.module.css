@@ -365,7 +365,15 @@
 .btn:not(.btnDisabled):active { transform: scale(0.97); }
 
 .btnModifier  { background-color: #b0b0b0; color: #ffffff; }
+.btnModifier:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 10px 20px rgba(5, 176, 228, 0.5); 
+}
 .btnAnnuler   { background-color: #374151; color: #ffffff; }
+.btnAnnuler:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 10px 20px rgba(228, 195, 5, 0.5); 
+}
 
 .btnDisabled {
   background-color: #374151 important;

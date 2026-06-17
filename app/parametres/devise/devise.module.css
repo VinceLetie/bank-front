@@ -257,8 +257,20 @@
 .btn:not(.btnDisabled):active { transform: scale(0.97); }
 
 .btnAjouter { background-color: #e8ff00; color: #1a1a1a; }
+.btnAjouter:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 10px 20px rgba(217, 255, 3, 0.5); 
+}
 .btnModifier { background-color: #b0b0b0; color: #ffffff; }
+.btnModifier:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 10px 20px rgba(5, 176, 228, 0.5); 
+}
 .btnSupprimer { background-color: #e8a010; color: #ffffff; }
+.btnSupprimer:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 10px 20px rgba(255, 41, 3, 0.5); 
+}
 
 .btnDisabled {
   background-color: #374151 !important;
